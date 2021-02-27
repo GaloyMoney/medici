@@ -64,6 +64,10 @@ module.exports = class Book {
       delete query.end_date;
     }
 
+    if (!query.currency) {
+      throw Error("currency is a mandatory field")
+    }
+
     const keys = Object.keys(this.transactionModel.schema.paths);
     for (let key in query) {
       let val = query[key];
